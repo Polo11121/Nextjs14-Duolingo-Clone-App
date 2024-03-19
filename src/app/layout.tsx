@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -11,9 +12,11 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({ children }: Readonly<PropsWithChildren>) => (
-  <html lang="en">
-    <body className={inter.className}>{children}</body>
-  </html>
+  <ClerkProvider>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
+    </html>
+  </ClerkProvider>
 );
 
 export default RootLayout;
