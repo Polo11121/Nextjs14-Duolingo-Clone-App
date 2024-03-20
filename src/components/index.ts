@@ -1,7 +1,11 @@
+export { FeedWrapper } from "@/components/FeedWrapper";
 export { Footer } from "@/components/Footer";
 export { Header } from "@/components/Header";
+export { LearnHeader } from "@/components/LearnHeader";
 export { Logo } from "@/components/Logo";
 export { MobileHeader } from "@/components/MobileHeader";
 export { MobileSidebar } from "@/components/MobileSidebar";
 export { Sidebar } from "@/components/Sidebar";
 export { SidebarItem } from "@/components/SidebarItem";
+export { StickyWrapper } from "@/components/StickyWrapper";
+export { UserProgress } from "@/components/UserProgress";
