@@ -1,3 +1,4 @@
+export { Card } from "@/components/Card";
 export { FeedWrapper } from "@/components/FeedWrapper";
 export { Footer } from "@/components/Footer";
 export { Header } from "@/components/Header";
