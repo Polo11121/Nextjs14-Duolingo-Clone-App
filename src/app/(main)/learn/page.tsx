@@ -4,24 +4,33 @@ import {
   StickyWrapper,
   UserProgress,
 } from "@/components";
+import { getUserProgress } from "@/db/queries";
+import { redirect } from "next/navigation";
 
-const LearnPage = () => (
-  <div className="flex flex-row gap-[40px] px-6">
-    <FeedWrapper>
-      <LearnHeader title="spanish" />
-    </FeedWrapper>
-    <StickyWrapper>
-      <UserProgress
-        activeCourse={{
-          title: "Spanish",
-          imageSrc: "/es.svg",
-        }}
-        hasActiveSubscription={false}
-        hearts={5}
-        points={100}
-      />
-    </StickyWrapper>
-  </div>
-);
+const LearnPage = async () => {
+  const userProgressData = getUserProgress();
+
+  const [userProgress] = await Promise.all([userProgressData]);
+
+  if (!userProgress || !userProgress.activeCourse) {
+    redirect("/courses");
+  }
+
+  return (
+    <div className="flex flex-row gap-[40px] px-6">
+      <FeedWrapper>
+        <LearnHeader title={userProgress.activeCourse.title} />
+      </FeedWrapper>
+      <StickyWrapper>
+        <UserProgress
+          activeCourse={userProgress.activeCourse}
+          hasActiveSubscription={false}
+          hearts={userProgress.hearts}
+          points={userProgress.points}
+        />
+      </StickyWrapper>
+    </div>
+  );
+};
 
 export default LearnPage;

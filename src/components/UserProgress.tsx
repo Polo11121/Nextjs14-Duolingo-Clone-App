@@ -2,15 +2,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui";
 import Image from "next/image";
 import { InfinityIcon } from "lucide-react";
+import { courses } from "@/db/schemas";
 
 type UserProgressProps = {
   hasActiveSubscription: boolean;
   points: number;
   hearts: number;
-  activeCourse: {
-    title: string;
-    imageSrc: string;
-  };
+  activeCourse: typeof courses.$inferSelect;
 };
 
 export const UserProgress = ({

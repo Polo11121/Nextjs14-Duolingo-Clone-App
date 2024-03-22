@@ -3,6 +3,7 @@ export { FeedWrapper } from "@/components/FeedWrapper";
 export { Footer } from "@/components/Footer";
 export { Header } from "@/components/Header";
 export { LearnHeader } from "@/components/LearnHeader";
+export { LoadingScreen } from "@/components/LoadingScreen";
 export { Logo } from "@/components/Logo";
 export { MobileHeader } from "@/components/MobileHeader";
 export { MobileSidebar } from "@/components/MobileSidebar";
