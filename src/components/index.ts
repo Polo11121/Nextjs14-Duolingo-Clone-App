@@ -8,6 +8,8 @@ export { LoadingScreen } from "@/components/LoadingScreen";
 export { Logo } from "@/components/Logo";
 export { MobileHeader } from "@/components/MobileHeader";
 export { MobileSidebar } from "@/components/MobileSidebar";
+export { Quiz } from "@/components/Quiz";
+export { QuizHeader } from "@/components/QuizHeader";
 export { Sidebar } from "@/components/Sidebar";
 export { SidebarItem } from "@/components/SidebarItem";
 export { StickyWrapper } from "@/components/StickyWrapper";

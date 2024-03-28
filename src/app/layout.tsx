@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+import { ExitModal } from "@/components/modal/ExitModal";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui";
 import { Inter } from "next/font/google";
@@ -17,6 +18,7 @@ const RootLayout = ({ children }: Readonly<PropsWithChildren>) => (
     <html lang="en">
       <body className={inter.className}>
         <Toaster />
+        <ExitModal />
         {children}
       </body>
     </html>
