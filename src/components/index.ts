@@ -1,4 +1,6 @@
+export { Answer } from "@/components/Answer";
 export { Card } from "@/components/Card";
+export { Challenge } from "@/components/Challenge";
 export { FeedWrapper } from "@/components/FeedWrapper";
 export { Footer } from "@/components/Footer";
 export { Header } from "@/components/Header";
@@ -8,6 +10,7 @@ export { LoadingScreen } from "@/components/LoadingScreen";
 export { Logo } from "@/components/Logo";
 export { MobileHeader } from "@/components/MobileHeader";
 export { MobileSidebar } from "@/components/MobileSidebar";
+export { QuestionBubble } from "@/components/QuestionBubble";
 export { Quiz } from "@/components/Quiz";
 export { QuizHeader } from "@/components/QuizHeader";
 export { Sidebar } from "@/components/Sidebar";
