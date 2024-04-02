@@ -14,6 +14,7 @@ export { QuestionBubble } from "@/components/QuestionBubble";
 export { Quiz } from "@/components/Quiz";
 export { QuizFooter } from "@/components/QuizFooter";
 export { QuizHeader } from "@/components/QuizHeader";
+export { QuizResultCard } from "@/components/QuizResultCard";
 export { Sidebar } from "@/components/Sidebar";
 export { SidebarItem } from "@/components/SidebarItem";
 export { StickyWrapper } from "@/components/StickyWrapper";

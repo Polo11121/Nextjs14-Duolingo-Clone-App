@@ -5,10 +5,10 @@ import { Button } from "@/components/ui";
 import Link from "next/link";
 
 type QuizFooterProps = {
-  isDisabled: boolean;
+  isDisabled?: boolean;
   status: "correct" | "wrong" | "none" | "completed";
   onCheck: () => void;
-  lessonId: number;
+  lessonId?: number;
 };
 
 export const QuizFooter = ({

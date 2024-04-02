@@ -7,10 +7,14 @@ import {
   QuestionBubble,
   Challenge,
   QuizFooter,
+  QuizResultCard,
 } from "@/components";
 import { upsertChallengeProgress } from "@/actions/challengeProgress";
 import { toast } from "sonner";
 import { reduceHearts } from "@/actions/userProgress";
+import { useAudio, useWindowSize } from "react-use";
+import Confetti from "react-confetti";
+import Image from "next/image";
 
 type QuizProps = {
   initialLessonId: number;
@@ -30,6 +34,18 @@ export const Quiz = ({
   userSubscription,
   initialPercentage,
 }: QuizProps) => {
+  const { width, height } = useWindowSize();
+  const [correctAudio, _c, correctAudioControls] = useAudio({
+    src: "/correct.wav",
+  });
+  const [incorrectAudio, _i, incorrectAudioControls] = useAudio({
+    src: "/incorrect.wav",
+  });
+  const [finishAudio] = useAudio({
+    src: "/finish.mp3",
+    autoPlay: true,
+  });
+  const [lessonId] = useState(initialLessonId);
   const [isPending, startTransition] = useTransition();
   const [hearts, setHearts] = useState(initialHearts);
   const [percentage, setPercentage] = useState(initialPercentage);
@@ -47,6 +63,40 @@ export const Quiz = ({
   const [selectedOption, setSelectedOption] = useState<number>();
 
   const currentChallenge = challenges[activeIndex];
+
+  if (!currentChallenge) {
+    return (
+      <>
+        {finishAudio}
+        <Confetti
+          height={height}
+          width={width}
+          recycle={false}
+          numberOfPieces={500}
+          tweenDuration={10000}
+        />
+        <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
+          <Image
+            src="/finish.svg"
+            alt="Finish"
+            className="hidden lg:block"
+            height={100}
+            width={100}
+          />
+          <h1 className="text-xl lg:text-3xl font-bold text-neutral-700">
+            Great job! <br /> You&apos;ve completed the lesson.
+          </h1>
+          <div className="flex items-center gap-x-4 w-full">
+            <QuizResultCard variant="points" value={challenges.length * 10} />
+            <QuizResultCard variant="hearts" value={hearts * 10} />
+          </div>
+        </div>
+
+        <QuizFooter status="completed" onCheck={() => {}} lessonId={lessonId} />
+      </>
+    );
+  }
+
   const options = currentChallenge?.challengeOptions || [];
 
   const selectHandler = (optionId: number) => {
@@ -94,6 +144,8 @@ export const Quiz = ({
             setHearts((prevHearts) => prevHearts - 1);
             return;
           }
+
+          correctAudioControls.play();
           setStatus("correct");
           setPercentage(
             (prevPercentage) => prevPercentage + 100 / challenges.length
@@ -116,6 +168,7 @@ export const Quiz = ({
             return;
           }
 
+          incorrectAudioControls.play();
           setStatus("wrong");
 
           if (!response?.error) {
@@ -166,7 +219,6 @@ export const Quiz = ({
         isDisabled={!selectedOption || isPending}
         status={status}
         onCheck={continueHandler}
-        lessonId={initialLessonId}
       />
     </>
   );

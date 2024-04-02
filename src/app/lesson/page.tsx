@@ -15,9 +15,11 @@ const LessonPage = async () => {
     redirect("/courses");
   }
 
+  const lessonChallenges = lesson.challenges ?? [];
+
   const initialPercentage =
-    (lesson.challenges.filter((challenge) => challenge.completed).length /
-      lesson.challenges.length) *
+    (lessonChallenges.filter((challenge) => challenge.completed).length /
+      lessonChallenges.length) *
     100;
 
   return (
