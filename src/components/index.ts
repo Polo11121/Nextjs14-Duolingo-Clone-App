@@ -12,6 +12,7 @@ export { MobileHeader } from "@/components/MobileHeader";
 export { MobileSidebar } from "@/components/MobileSidebar";
 export { QuestionBubble } from "@/components/QuestionBubble";
 export { Quiz } from "@/components/Quiz";
+export { QuizFooter } from "@/components/QuizFooter";
 export { QuizHeader } from "@/components/QuizHeader";
 export { Sidebar } from "@/components/Sidebar";
 export { SidebarItem } from "@/components/SidebarItem";
