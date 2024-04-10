@@ -1,3 +1,6 @@
+(Duolingo Clone - In Progress) This GitHub repository hosts a Next.js-based Duolingo clone, aiming to mimic key features like interactive lessons, progress tracking, and gamified learning, utilizing server-side rendering for enhanced performance and user engagement.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
